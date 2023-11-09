@@ -1,8 +1,12 @@
 // Company.java
 package Mapping.pkg;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -10,9 +14,9 @@ public class Companys {
 	@Id
 	private int companyId;
 	private String companyName;
-	
-	@ManyToOne
-	private Owner companyOwner;
+
+	@ManyToOne(cascade=CascadeType.ALL)
+    private Owner owners;
 
 	public int getCompanyId() {
 		return companyId;
@@ -30,11 +34,12 @@ public class Companys {
 		this.companyName = companyName;
 	}
 
-	public Owner getCompanyOwner() {
-		return companyOwner;
+	public Owner getOwners() {
+		return owners;
 	}
 
-	public void setCompanyOwner(Owner companyOwner) {
-		this.companyOwner = companyOwner;
+	public void setOwners(Owner owners) {
+		this.owners = owners;
 	}
+
 }
